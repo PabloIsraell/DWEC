@@ -19,3 +19,6 @@ if(disponible >= retirar) {
  *  === Igual estricto
  *  !== Diferente a
  */
+
+
+
