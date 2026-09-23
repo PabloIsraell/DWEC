@@ -10,11 +10,14 @@ const cliente = {
 
 
 const cliente2 = {
-    nombreCliente: 'Luis',
-    esPremium: false
+    nombre: 'Luis',
 }
 
 const pedido = {...cliente, ...producto}
 console.log(pedido)
 
+const pedido2 = { ...cliente2, ...producto}
+console.log(pedido2)
 
+const pedido3 = {...producto, ...cliente2}
+console.log(pedido3)
