@@ -91,5 +91,11 @@ function buscarLibro(id){
 
 
 function eliminarLibro(id){
-    return
+     const index = libros.findIndex(libro => libro.id == id);
+    libros.splice(index, 1);
+}
+export { eliminarLibro, buscarLibro };
+
+function calcularTotalPaginas(){
+    return libros.reduce((total, libro) => total + libro.paginas, 0);
 }
