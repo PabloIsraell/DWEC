@@ -1,10 +1,12 @@
+
+// Array de objetos.
+// Si piden crear una colección de elementos → array de objetos.
 const libros = [
     {
         id: 1,
-        titulo: "La Biblia 2",   
+        titulo: "La Biblia 2",
         autor: "Yo",
         paginas: 3000
-
     },
     {
         id: 2,
@@ -53,49 +55,76 @@ const libros = [
         titulo: "La Biblia 2",
         autor: "Yo",
         paginas: 3000
-    
     },
     {
         id: 10,
         titulo: "El Aleph",
         autor: "Jorge Luis Borges",
         paginas: 320
-    
     }
-]
+];
 
-function agregarLibro(nuevoLibro){
-    libros.push(nuevoLibro)
-}
-
-
-function agregarLibros(libros){
-    const nuevoLibro= {
-        id: libros.length +1,
-        titulo: "Nuevo libro",
-        autor: "No sé jaja",
-        paginas: 100
-    }
+// Añadir un elemento al array → push()
+function agregarLibro(nuevoLibro) {
     libros.push(nuevoLibro);
 }
 
-function obtenerLibros(){
+// Devolver todo el array
+function obtenerLibros() {
     return libros;
 }
 
-export { agregarLibro, obtenerLibros, agregarLibros };
-
-function buscarLibro(id){
-    return libros.find(libro => libro.id == id);
+// Buscar UN elemento → find()
+function buscarLibro(id) {
+    return libros.find(libro => libro.id === id);
 }
 
+// Buscar la posición → findIndex()
+// Después eliminar → splice()
+function eliminarLibro(id) {
+    const index = libros.findIndex(libro => libro.id === id);
 
-function eliminarLibro(id){
-     const index = libros.findIndex(libro => libro.id == id);
-    libros.splice(index, 1);
+    // Si encuentra el libro, lo elimina
+    if (index !== -1) {
+        libros.splice(index, 1);
+    }
 }
-export { eliminarLibro, buscarLibro };
 
-function calcularTotalPaginas(){
-    return libros.reduce((total, libro) => total + libro.paginas, 0);
+// Sumar todos los valores → reduce()
+function calcularTotalPaginas() {
+    return libros.reduce(
+        (total, libro) => total + libro.paginas,
+        0
+    );
 }
+
+// Ordenar números de menor a mayor → sort()
+function ordenarPorPaginas() {
+    libros.sort((a, b) => a.paginas - b.paginas);
+}
+
+// ¿Hay AL MENOS UNO que cumpla? → some()
+// Devuelve true o false.
+function hayLibrosLargos(limitePaginas) {
+    return libros.some(libro => libro.paginas > limitePaginas);
+}
+
+// ¿TODOS cumplen la condición? → every()
+// Devuelve true o false.
+function todosSonLibrosCortos(limitePaginas) {
+    return libros.every(libro => libro.paginas < limitePaginas);
+}
+
+// Exportar las funciones para poder utilizarlas desde app.js
+
+export {
+    agregarLibro,
+    obtenerLibros,
+    buscarLibro,
+    eliminarLibro,
+    calcularTotalPaginas,
+    ordenarPorPaginas,
+    hayLibrosLargos,
+    todosSonLibrosCortos
+};
+
