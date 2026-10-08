@@ -11,7 +11,7 @@ import {
     calcularTotalPaginas,
     ordenarPorPaginas,
     hayLibrosLargos,
-    todosSonLibrosCortos
+    todosSonLibrosCortosº
 } from "./biblioteca.js";
 
 
